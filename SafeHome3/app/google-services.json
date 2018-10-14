@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "996300608457",
+    "firebase_url": "https://safehome-93e21.firebaseio.com",
+    "project_id": "safehome-93e21",
+    "storage_bucket": "safehome-93e21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996300608457:android:9cfc2d95cb7a76a6",
+        "android_client_info": {
+          "package_name": "com.s.safehome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "996300608457-hbh0iqig61md9pkl9vn2mktme6ahkod8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.s.safehome",
+            "certificate_hash": "eec78fd3e22825fff39ae859372e1f63d9afb97e"
+          }
+        },
+        {
+          "client_id": "996300608457-girhrcr96mghru43av8fe38sjafcok2e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC1FQui32yn5bvx5rxoB3HECwG8pmHPtw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "996300608457-girhrcr96mghru43av8fe38sjafcok2e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
