@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                                             } else {
-                                                startActivity(new Intent(MainActivity.this, Main3Activity.class));
+                                                startActivity(new Intent(MainActivity.this, Main4Activity.class));
 
                                             }
                                         } catch (Exception e) {

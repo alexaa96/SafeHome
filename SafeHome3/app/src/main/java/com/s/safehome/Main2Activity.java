@@ -1,6 +1,7 @@
 package com.s.safehome;
 
 import android.graphics.Color;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -9,8 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.security.Key;
 
@@ -33,10 +37,16 @@ public class Main2Activity extends AppCompatActivity {
 
         signup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                final DatabaseReference myRef = database.getReference("User");
+
                 AESCrypt crypt = new AESCrypt();
                 if (username.getText().toString().equals("") || pass.getText().toString().equals("") || mail.getText().toString().equals("") ||
                 phone.getText().toString().equals("") || verify_pass.getText().toString().equals(""))
                 {
+                    error.setTextColor(Color.RED);
+                    error.setText("Please fill all the fields");
 
                 }
                 else{
@@ -47,13 +57,38 @@ public class Main2Activity extends AppCompatActivity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                    final String finalUser = user;
+                    myRef.addValueEventListener(new ValueEventListener() {
 
-                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            //'String value = dataSnapshot.getValue(String.class);
+                            if ( ! dataSnapshot.hasChild(username.getText().toString())) {
+
+                                DatabaseReference user_ref = myRef.child(username.getText().toString());
+
+                                user_ref.setValue(finalUser);
+
+                            }
+                            else
+                            {
+                                error.setTextColor(Color.RED);
+                                error.setText("The username already exists");
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
 
 
-                    DatabaseReference myRef = database.getReference("User");
-                    DatabaseReference user_ref = myRef.child(username.getText().toString());
-                    user_ref.setValue(user);
+
+                    //DatabaseReference myRef = database.getReference("User");
+
                 } else {
                     pass.setTextColor(Color.RED);
                     pass.setText("Passwords don't match");

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Import" />
+        <item
+            android:id="@+id/Temp"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="House Temperature" />
+        <item
+            android:id="@+id/Humidity"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="House Humidity" />
+        <item
+            android:id="@+id/Monitor"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Door Monioring" />
+        <item
+            android:id="@+id/Devices"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Connected Devices" />
+        <item
+            android:id="@+id/weather"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Weather" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>
