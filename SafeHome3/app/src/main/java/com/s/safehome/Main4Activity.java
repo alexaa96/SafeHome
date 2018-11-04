@@ -90,10 +90,14 @@ public class Main4Activity extends AppCompatActivity
         } else if (id == R.id.Humidity) {
 
         } else if (id == R.id.Monitor) {
+            startActivity(new Intent(Main4Activity.this, HomeMonitoring.class));
+
 
         } else if (id == R.id.weather) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.Devices) {
+            startActivity(new Intent(Main4Activity.this, WiFIScanner.class));
+
 
         }
 

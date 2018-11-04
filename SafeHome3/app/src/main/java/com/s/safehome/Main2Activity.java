@@ -66,10 +66,10 @@ public class Main2Activity extends AppCompatActivity {
                             //'String value = dataSnapshot.getValue(String.class);
                             if ( ! dataSnapshot.hasChild(username.getText().toString())) {
 
+
                                 DatabaseReference user_ref = myRef.child(username.getText().toString());
 
                                 user_ref.setValue(finalUser);
-
                             }
                             else
                             {
