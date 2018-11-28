@@ -25,8 +25,10 @@ public class Logged_Data extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logged__data);
+        dates.clear();
         final ListView list =(ListView)findViewById(R.id.list_view);
         final TextView date=(TextView) findViewById(R.id.textView11);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -48,7 +50,7 @@ public class Logged_Data extends AppCompatActivity {
         adapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dates);
         list.setAdapter(adapter);
         //days.add(c.get(Calendar.DAY_OF_MONTH));
-        final String today_date=date.toString();
+        final String today_date=date.getText().toString();
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -62,11 +64,14 @@ public class Logged_Data extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                             String logged_data=dataSnapshot.getValue(String.class);
+                            if(logged_data.contains(today_date)) {
+
 
                                 String[] tokens = logged_data.split(",");
 
                                 String final_data = "Door was opened at: " + tokens[1] + ":" + tokens[2];
                                 dates.add(final_data);
+                            }
 
 
 

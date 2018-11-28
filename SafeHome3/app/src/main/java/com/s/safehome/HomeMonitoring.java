@@ -46,19 +46,37 @@ public class HomeMonitoring extends AppCompatActivity {
        // View inflatedView = getLayoutInflater().inflate(R.layout.activity_logged__data, null);
 
 
+
         final ImageView img=findViewById(R.id.imageView5);
         final TextView door_state=(TextView)findViewById(R.id.State);
         final Switch notifications_enable=(Switch)findViewById(R.id.switch1);
         final Button view_loggeddata=(Button)findViewById(R.id.button2);
-
-
-
-
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref=database.getReference("Count");
+
+        ref.addValueEventListener(new ValueEventListener(){
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Integer c = dataSnapshot.getValue(Integer.class);
+                count=c;
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
         final DatabaseReference myRef = database.getReference("DoorState");
         final DatabaseReference reference=database.getReference("Data");
-        final DatabaseReference ref=database.getReference("Count");
+
+
         myRef.addValueEventListener(new ValueEventListener() {
 
 
@@ -69,6 +87,7 @@ public class HomeMonitoring extends AppCompatActivity {
                 Integer value = dataSnapshot.getValue(Integer.class);
                // door_state.setText(value+" ");
                 final Intent intent = new Intent(HomeMonitoring.this, Logged_Data.class);
+
 
 
 
@@ -100,21 +119,9 @@ public class HomeMonitoring extends AppCompatActivity {
                         notify.flags |= Notification.FLAG_AUTO_CANCEL;
                         notif.notify(0, notify);
                     }
-                    ref.addValueEventListener(new ValueEventListener(){
 
-                                                  @Override
-                                                  public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                      Integer c = dataSnapshot.getValue(Integer.class);
-                                                      count=c;
-
-                                                  }
-
-                                                  @Override
-                                                  public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                                  }
-                                              });
                     ok=1;
+
 
 
                     reference.addValueEventListener(new ValueEventListener() {
@@ -130,11 +137,14 @@ public class HomeMonitoring extends AppCompatActivity {
 
                         }
 
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
                     });
+                    count++;
+                    ref.setValue(count);
 
                     door_state.setTextColor(Color.BLACK);
                     door_state.setText("OPEN");
@@ -151,8 +161,7 @@ public class HomeMonitoring extends AppCompatActivity {
                     img.setImageResource(R.drawable.closed);
                     if(value==0)
                     {
-                        count++;
-                        ref.setValue(count);
+                        //
                         ok=0;
                     }
                 }

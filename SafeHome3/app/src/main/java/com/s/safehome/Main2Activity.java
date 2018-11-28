@@ -35,6 +35,7 @@ public class Main2Activity extends AppCompatActivity {
         final EditText verify_pass = (EditText) findViewById(R.id.password);
         final TextView error        =(TextView)findViewById(R.id.error);
 
+
         signup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 

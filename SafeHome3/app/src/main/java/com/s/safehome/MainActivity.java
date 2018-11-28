@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
         sign_up.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Logged_Data.class));
+                startActivity(new Intent(MainActivity.this, Main2Activity.class));
 
 
 

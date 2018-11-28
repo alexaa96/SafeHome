@@ -26,7 +26,7 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="17dp"
-        android:text="TextView" />
+        android:text="0" />
 
     <LinearLayout
         android:layout_width="218dp"
@@ -167,7 +167,7 @@
             android:id="@+id/min"
             android:layout_width="149dp"
             android:layout_height="match_parent"
-            android:text="TextView" />
+            android:text="0" />
 
     </LinearLayout>
 
